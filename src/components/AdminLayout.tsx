@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { Bell, ChevronDown, LayoutGrid, Menu, User, X, Folder, File  } from 'lucide-react'
+import { Bell, ChevronDown, LayoutGrid, Menu, User, X, Folder, File } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
@@ -23,12 +23,12 @@ export default function AdminLayout({
     const [sidebarOpen, setSidebarOpen] = useState(false)
 
     const router = usePathname()
-    
+
     const isActive = (href: string) => router === href
-    
+
     const NavLink = ({ href, children }: Readonly<{ href: string; children: React.ReactNode }>) => (
         <Link href={href} legacyBehavior>
-            <a className={`text-sm font-medium block py-2.5 px-4 rounded transition duration-200 ${isActive(href) ? 'bg-gray-700 text-white' : 'hover:bg-gray-700 hover:text-white'}`}>
+            <a className={`text-sm font-medium block py-2.5 px-4 rounded transition duration-200 ${isActive(href) ? 'bg-gray-800 text-white' : 'hover:bg-gray-200 hover:text-gray-800'}`}>
                 {children}
             </a>
         </Link>
@@ -37,16 +37,18 @@ export default function AdminLayout({
     return (
         <div className="flex h-screen overflow-hidden">
             {/* Sidebar */}
-            <div className={`bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 transition duration-200 ease-in-out`}>
+            <div className={`bg-white text-gray-800 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform border-r border-gray-100 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 transition duration-200 ease-in-out`}>
                 <div className="flex items-center px-4">
-                    <span className="text-2xl font-semibold">Dashboard</span>
+                    <span className="text-2xl font-bold">
+                        Power PPT
+                    </span>
                     <div className="ml-auto md:hidden">
                         <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(!sidebarOpen)}>
                             <X className="h-6 w-6" />
                         </Button>
                     </div>
                 </div>
-                <nav className="space-y-2">
+                <nav className="space-y-3">
                     <NavLink href="/">
                         <LayoutGrid className="inline-block h-6 w-6 mr-2" />
                         Dashboard
@@ -65,13 +67,16 @@ export default function AdminLayout({
             {/* Main Content */}
             <div className="flex-1 flex flex-col overflow-hidden">
                 {/* Header */}
-                <header className="bg-white shadow-sm border border-gray-100">
+                <header className="bg-white border-b border-gray-100">
                     <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-                        <div className="flex items-center">
+                        <div className="flex items-center gap-4">
                             <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setSidebarOpen(!sidebarOpen)}>
                                 <Menu className="h-6 w-6" />
                             </Button>
-                            <h2 className="font-semibold text-xl text-gray-800">Dashboard</h2>
+                            <div>
+                                <h2 className="font-bold text-xl text-gray-800">Dashboard</h2>
+                                <p className="text-sm text-gray-500">Welcome to Power PPT</p>
+                            </div>
                         </div>
                         <div className="flex items-center">
                             <Button variant="ghost" size="icon">

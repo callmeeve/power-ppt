@@ -173,11 +173,8 @@ export default function SlidesPresentation() {
                         </div>
                     </CardContent>
                 </Card>
-                <div className="flex items-center justify-between space-x-4">
-                    <Button type="submit" variant="secondary">
-                        Save Presentation
-                    </Button>
-                    <Button type="button" onClick={generatePPT} className="flex items-center">
+                <div className="flex justify-end">
+                    <Button type="button" variant="outline" onClick={generatePPT} className="flex items-center hover:bg-gray-800 hover:text-white">
                         <FileDown className="w-4 h-4 mr-2" />
                         Generate PPT
                     </Button>
